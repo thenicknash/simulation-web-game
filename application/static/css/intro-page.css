@@ -1,0 +1,22 @@
+.intro-page-wrapper {
+  font-family: 'Nova Square', cursive;
+  /* height: 100vh; */
+}
+
+.squared-corners {
+  border-radius: 0;
+}
+
+.centered-form-field {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.archetype-card {
+  /* max-width: 10em; */
+  background: #f2f2f2;
+  color: #000;
+  margin: 1em;
+  padding: 1em;
+}
+

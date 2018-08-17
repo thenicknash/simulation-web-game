@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+<!-- Page title -->
+{% block title %}
+  Relationships
+{% endblock %}
+
+<!-- local CSS -->
+{% block css %}
+  <link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
+  <link rel="stylesheet" href=" {{ url_for( 'static', filename='css/base-game.css' ) }} ">
+{% endblock %}
+
+<!-- Content -->
+{% block body %}
+  
+
+  <!-- tab navigation -->
+  {% include '_tabs.html' %}
+  <!-- tab navigation end -->
+
+{% endblock %}
+
+<!-- local JavaScripts -->
+{% block scripts %}
+  <script src=" {{ url_for( 'static', filename='js/initial-game.js' ) }} "></script>
+{% endblock %}

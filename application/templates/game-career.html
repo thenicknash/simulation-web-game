@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+<!-- Page title -->
+{% block title %}
+  Career
+{% endblock %}
+
+<!-- local CSS -->
+{% block css %}
+  <link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
+  <link rel="stylesheet" href=" {{ url_for( 'static', filename='css/game-career.css' ) }} ">
+{% endblock %}
+
+<!-- Content -->
+{% block body %}
+  
+  <div class="has-background-dark has-text-white">
+    <section class="section">
+      <div class="container">
+
+        <!-- Banner -->
+        {% include '_header.html' %}
+        <!-- Banner end -->
+        
+        <!-- Career module -->
+        <div class="career-module has-background-light has-text-black has-text-weight-bold">
+
+          <h1 class="is-size-1 has-text-centered">Career &nbsp;<span class="icon"><i class="fas fa-user-tie"></i></span></h1>
+
+          <hr class="black-hr">
+
+          <!-- List Character career details -->
+          <!-- Job -->
+          <div class="columns is-mobile">
+
+            <div class="column">
+              <p>Job:</p>
+            </div>
+
+            <div class="column">
+              <p id="player-job-display"></p>
+            </div>
+
+          </div>
+
+          <!-- Field -->
+          <div class="columns is-mobile">
+
+            <div class="column">
+              <p>Field:</p>
+            </div>
+            <div class="column">
+              <p id="player-field-display"></p>
+            </div>
+
+          </div>
+
+          <!-- Company -->
+          <div class="columns is-mobile">
+
+            <div class="column">
+              <p>Company:</p>
+            </div>
+            <div class="column">
+              <p id="player-company-display"></p>
+            </div>
+
+          </div>
+
+          <!-- Salary -->
+          <div class="columns is-mobile">
+
+            <div class="column">
+              <p>Salary:</p>
+            </div>
+            <div class="column">
+              <p>$<span id="player-salary-display"></span></p>
+            </div>
+
+          </div>
+
+          <!-- Description -->
+          <div class="columns is-mobile">
+
+            <div class="column">
+              <p>Description:</p>
+            </div>
+            <div class="column">
+              <p id="player-description-display"></p>
+            </div>
+
+          </div>
+          <!-- List character career details end -->
+
+        </div>
+        <!-- Career module end -->
+
+        <br><br>
+
+        <!-- Other potential jobs -->
+        <div class="potential-jobs-module has-background-light has-text-black">
+
+          <h1 class="is-size-1 has-text-centered">Available Jobs &nbsp;<span class="icon"><i class="fas fa-building"></i></span></h1>
+
+          <hr class="black-hr">
+
+          <!-- Table showing other potential jobs -->
+          <div class="potential-jobs-table-wrapper">     
+            <table class="table is-fullwidth">
+
+              <thead>
+
+                <th>Job</th>
+                <th>Field</th>
+                <th>Company</th>
+                <th>Salary</th>
+                <th>Description</th>
+                <th>Apply</th>
+
+              </thead>
+
+              <tbody>
+
+                <tr>
+
+                  <td>Janitor</td>
+                  <td>Cleaning</td>
+                  <td>NuCorp</td>
+                  <td>$18000</td>
+                  <td>You're working for a better day.</td>
+                  <td>
+                    <button class="button is-link">Apply</button>
+                  </td>
+
+                </tr>
+
+                <tr>
+
+                  <td>Janitor</td>
+                  <td>Cleaning</td>
+                  <td>NuCorp</td>
+                  <td>$18000</td>
+                  <td>You're working for a better day.</td>
+                  <td>
+                    <button class="button is-link">Apply</button>
+                  </td>
+
+                </tr>
+
+                <tr>
+
+                  <td>Janitor</td>
+                  <td>Cleaning</td>
+                  <td>NuCorp</td>
+                  <td>$18000</td>
+                  <td>You're working for a better day.</td>
+                  <td>
+                    <button class="button is-link">Apply</button>
+                  </td>
+
+                </tr>
+
+              </tbody>
+
+            </table>
+          </div>
+          <!-- Table showing other potential jobs end -->
+
+        </div>
+        <!-- Other potential jobs end -->
+
+        <br>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- tab navigation -->
+  {% include '_tabs.html' %}
+  <!-- tab navigation end -->
+
+{% endblock %}
+
+<!-- local JavaScripts -->
+{% block scripts %}
+  <script src=" {{ url_for( 'static', filename='js/initial-game.js' ) }} "></script>
+  <script src=" {{ url_for( 'static', filename='js/game-career.js' ) }} "></script>
+{% endblock %}

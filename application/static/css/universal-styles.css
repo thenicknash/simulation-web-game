@@ -1,0 +1,63 @@
+body {
+  font-family: 'Nova Square', cursive;
+}
+
+
+/* Make the <HR> element the color black */
+.black-hr {
+  background-color: #000;
+}
+
+
+/* Making the tabs not transparent */
+.tabs li {
+  background-color: #f5f5f5;
+  border-color: #b5b5b5;
+}
+
+.tabs li:hover,
+.tabs li a:hover {
+  background-color: #f5f5f5d0;
+  border-color: #b5b5b5bd;
+}
+
+
+/* Make the tabs stick to the bottom */
+.stick-to-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+
+/* Make the tabs on the game page mobile responsive */
+@media screen and (max-width: 768px) {
+
+  li > a > span:not(.icon) {
+    visibility: hidden;
+    position:  absolute;
+  }
+
+  nav.tabs li:not(.is-active) {
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+  }
+
+  .tabs .icon {
+    margin-left: 0.5em;
+  }
+}
+
+.tabs li {
+  transition: flex-grow 1s ease;
+}
+
+
+/* Remove margin from bottom of tabs */
+.tabs:not(:last-child) {
+  margin-bottom: 0;
+}

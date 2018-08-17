@@ -1,0 +1,40 @@
+/* Square the corners on the tab */
+.tabs.is-toggle li:first-child a {
+  border-radius: 0;
+}
+
+.tabs.is-toggle li:last-child a {
+  border-radius: 0;
+}
+
+
+/* The mood module */
+.mood-module,
+.bank-account-module,
+.personal-info-module {
+  padding: 1em 2em;
+  min-height: 470px;
+}
+
+.recent-activity-module {
+  padding: 1em 2em;
+}
+
+
+
+/* The recent activity module */
+.recent-activity-feed {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.recent-activity-row {
+  padding: 0.2em 1em;
+}
+
+@media screen and (max-width: 768px) {
+  .recent-activity-row {
+    font-size: 1.5rem !important;
+    padding: 0.2em 0.7em;
+  }
+}

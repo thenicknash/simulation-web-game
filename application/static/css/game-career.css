@@ -1,0 +1,12 @@
+/* The career module */
+.career-module {
+  padding: 1em 2em;
+}
+
+.potential-jobs-table-wrapper {
+  overflow-x: auto;
+}
+
+.potential-jobs-module {
+  padding: 1em 2em;
+}

@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+
+<!-- Page title -->
+{% block title %}
+Introduction
+{% endblock %}
+
+<!-- local CSS -->
+{% block css %}
+  <link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
+  <link rel="stylesheet" href=" {{ url_for( 'static', filename='css/intro-page.css' ) }} ">
+{% endblock %}
+    
+<!-- Content -->
+{% block body %}
+
+  <div class="intro-page-wrapper has-background-dark has-text-white">
+    <section class="section">
+      <div class="container">
+
+        <h1 class="is-size-1 has-text-centered">Welcome, Player!</h1>
+
+        <h1 class="is-size-1 has-text-centered">Tell us who you are:</h1>
+
+        <br><br>
+          
+        <!-- Name -->
+        <div class="field centered-form-field">
+          <label class="label has-text-white">Name</label>
+          <div class="control">
+            <input class="input squared-corners" type="text" id="player-name" name="player-name">
+          </div>
+        </div>
+
+        <br>
+
+        <!-- Home -->
+        <div class="field centered-form-field">
+          <label class="label has-text-white">Home</label>
+          <div class="control">
+            <input class="input squared-corners" type="text" id="player-home" name="player-home">
+          </div>
+        </div>
+
+        <br>
+
+        <!-- Archetype -->
+        <div class="field centered-form-field">
+          <label class="label has-text-white">Archetype</label>
+          
+          <div class="columns">
+
+            <!-- Warrior -->
+            <div class="column">
+              <div class="has-text-centered">
+                Warrior <input type="radio" name="archetype-choice" value="warrior">
+              </div>
+
+              <!-- Card -->
+              <div class="archetype-card">
+                <h1 class="is-size-3 has-text-centered">Warrior</h1>
+
+                <hr class="black-hr">
+
+                <!-- Card HP -->
+                <div class="columns is-mobile">
+                  <div class="column">
+                    HP:
+                  </div>
+                  <div class="column">
+                    100
+                  </div>
+                </div>
+
+                <!-- Card Energy -->
+                <div class="columns is-mobile">
+                  <div class="column">
+                    ENG:
+                  </div>
+                  <div class="column">
+                    20
+                  </div>
+                </div>
+
+                <!-- Card Special -->
+                <div class="columns is-mobile">
+                  <div class="column">
+                    SPC:
+                  </div>
+                  <div class="column">
+                    Feast
+                  </div>
+                </div>
+
+                <p></p>
+              </div>
+              <!-- Card end -->
+
+            </div>
+
+            <!-- Balanced -->
+            <div class="column">
+              <div class="has-text-centered">
+                Balanced <input type="radio" name="archetype-choice" value="balanced">
+              </div>
+
+              <!-- Card -->
+              <div class="archetype-card">
+                <h1 class="is-size-3 has-text-centered">Balanced</h1>
+
+                <hr class="black-hr">
+
+                <!-- Card HP -->
+                <div class="columns is-mobile">
+                  <div class="column">
+                    HP:
+                  </div>
+                  <div class="column">
+                    70
+                  </div>
+                </div>
+
+                <!-- Card Energy -->
+                <div class="columns is-mobile">
+                  <div class="column">
+                    ENG:
+                  </div>
+                  <div class="column">
+                    30
+                  </div>
+                </div>
+
+                <!-- Card Special -->
+                <div class="columns is-mobile">
+                  <div class="column">
+                    SPC:
+                  </div>
+                  <div class="column">
+                    Yuletide
+                  </div>
+                </div>
+
+                <p></p>
+              </div>
+              <!-- Card end -->
+
+            </div>
+
+            <!-- Sage -->
+            <div class="column">
+              <div class="has-text-centered">
+                Sage <input type="radio" name="archetype-choice" value="sage">
+              </div>
+
+              <!-- Card -->
+              <div class="archetype-card">
+                <h1 class="is-size-3 has-text-centered">Sage</h1>
+
+                <hr class="black-hr">
+
+                <!-- Card HP -->
+                <div class="columns is-mobile">
+                  <div class="column">
+                    HP:
+                  </div>
+                  <div class="column">
+                    55
+                  </div>
+                </div>
+
+                <!-- Card Energy -->
+                <div class="columns is-mobile">
+                  <div class="column">
+                    ENG:
+                  </div>
+                  <div class="column">
+                    40
+                  </div>
+                </div>
+
+                <!-- Card Special -->
+                <div class="columns is-mobile">
+                  <div class="column">
+                    SPC:
+                  </div>
+                  <div class="column">
+                    Regenerate
+                  </div>
+                </div>
+
+                <p></p>
+              </div>
+              <!-- Card end -->
+
+            </div>
+
+          </div>
+
+        </div>
+        <!-- Archetype end -->
+
+        <br>
+
+        <!-- Submit button -->
+        <div class="centered-form-field">
+          <button id="submit-new-player-button" class="button is-warning is-medium is-fullwidth">Next</button>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+{% endblock %}
+
+<!-- local JavaScripts -->
+{% block scripts %}
+  <script src=" {{ url_for( 'static', filename='js/intro.js' ) }} "></script>
+{% endblock %}  

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+<!-- Page title -->
+{% block title %}
+New Game
+{% endblock %}
+
+<!-- Local CSS -->
+{% block css %}
+  <link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
+{% endblock %}
+    
+<!-- Content -->
+{% block body %}
+  <!-- Full page hero -->
+  <section class="hero is-dark is-fullheight">
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">
+          LIFE SIMULATOR
+        </h1>
+        <h2 class="subtitle">
+          Live a little
+        </h2>
+        <a class="button is-warning is-medium" href="/intro">New Game</a>
+      </div>
+    </div>
+
+  </section>
+  <!-- Full page hero end -->
+{% endblock %}
+
+<!-- local JavaScripts -->
+{% block scripts %}
+  <script src=" {{ url_for( 'static', filename='js/new-game.js' ) }} "></script>
+{% endblock %}

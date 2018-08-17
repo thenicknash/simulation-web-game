@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+<!-- Page title -->
+{% block title %}
+  Home
+{% endblock %}
+
+<!-- local CSS -->
+{% block css %}
+  <link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
+  <link rel="stylesheet" href=" {{ url_for( 'static', filename='css/game-home.css' ) }} ">
+{% endblock %}
+
+<!-- Content -->
+{% block body %}
+
+  <div class="has-background-dark has-text-white">
+    <section class="section">
+      <div class="container">
+
+        <!-- Banner -->
+        {% include '_header.html' %}
+        <!-- Banner end -->
+
+        <!-- Mood & bank modules -->
+        <div class="columns is-desktop">
+
+          <!-- Mood Module -->
+          <div class="column">
+
+            <div class="mood-module has-background-light has-text-black">
+
+              <h1 class="is-size-1 has-text-centered">Mood &nbsp;<span class="icon has-text-danger"><i class="fas  fa-heart"></i></span></h1>
+    
+              <hr class="black-hr">
+    
+              <!-- HP bar -->
+              <p class="is-size-3">Health (<span id="health-number-display"></span>/100) :</p>
+              <progress id="health-bar" class="progress is-danger" value="50" max="100">100%</progress>
+    
+              <!-- Energy bar -->
+              <p class="is-size-3">Energy (<span id="energy-number-display"></span>/100) :</p>
+              <progress id="energy-bar" class="progress is-link" value="100" max="100">100%</progress>
+    
+              <!-- Current mood -->
+              <p class="is-size-3">Current Mood:</p>
+              <span id="current-mood" class="is-size-3"></span>
+    
+            </div>
+            
+          </div>
+          <!-- Mood Module end -->
+
+          <br><br>
+
+          <!-- Bank account module -->
+          <div class="column">
+
+            <div class="bank-account-module has-background-light has-text-black">
+
+              <h1 class="is-size-1 has-text-centered">Bank &nbsp;<span class="icon has-text-success"><i class="fas  fa-piggy-bank"></i></span></h1>
+
+              <hr class="black-hr">
+
+              
+              <div class="has-text-centered">
+
+                <br>
+
+                <!-- Total balance -->
+                <p class="is-size-3">Balance: $12,099</p>
+
+                <br><br>
+              
+                <!-- Bills -->
+                <p class="is-size-3">Next Bill Payment: <span class="has-text-danger">7 DAYS</span></p>
+
+                <br><br>
+
+                <!-- Paycheck -->
+                <p class="is-size-3">Next Pay Check: <span class="has-text-success">11 DAYS</span></p>
+
+              </div>
+
+            </div>
+
+          </div>
+          <!-- Bank account module end -->
+
+        </div>
+        <!-- Mood & bank modules end -->
+
+        <br><br>
+
+        <!-- Personal module -->
+        <div class="personal-info-module has-background-light has-text-black">
+
+          <h1 class="is-size-1 has-text-centered">Personal &nbsp;<span class="icon has-text-info"><i class="fas fa-user"></i></span></h1>
+
+          <hr class="black-hr">
+
+          <!-- Player name -->
+          <p class="is-size-3"><u>Name</u>: <span id="player-name-display"></span></p>
+
+          <!-- Player age -->
+          <p class="is-size-3"><u>Age</u>: <span id="player-age-display"></span></p>
+
+          <!-- Player home -->
+          <p class="is-size-3"><u>Home</u>: <span id="player-home-display"></span></p>
+
+          <!-- Player skills -->
+          <p class="is-size-3"><u>Skills</u>:</p>
+
+          <p class="is-size-3">Strength: <span id="player-strength-display"></span></p>
+
+        </div>
+        <!-- Personal module end -->
+
+        <br><br>
+
+        <!-- Recent activity -->
+        <div class="recent-activity-module has-background-light has-text-black">
+
+          <h1 class="is-size-1 has-text-centered">Recent Activity</h1>
+
+          <hr class="black-hr">
+
+          <!-- Recent activity feed -->
+          <div class="recent-activity-feed has-background-grey-lighter"></div>
+          <!-- Recent activity feed end -->
+
+        </div>
+        <!-- Recent activity end -->
+
+        <br><br>
+
+      </div>
+    </section>
+  </div>
+  
+  <!-- tab navigation -->
+  {% include '_tabs.html' %}
+  <!-- tab navigation end -->
+
+{% endblock %}
+
+<!-- local JavaScripts -->
+{% block scripts %}
+  <script src=" {{ url_for( 'static', filename='js/initial-game.js' ) }} "></script>
+  <script src=" {{ url_for( 'static', filename='js/game-home.js' ) }} "></script>
+{% endblock %}
