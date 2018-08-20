@@ -177,8 +177,5 @@ localStorage.setItem( "recentEventsArray", JSON.stringify( recentEventsArray ) )
   playerAgeDisplay.html( playerCharacterObj.age );
   playerHomeDisplay.html( playerCharacterObj.home );
   playerStrengthDisplay.html( playerCharacterObj.strength );
-  
-
 }) ();
-
 
