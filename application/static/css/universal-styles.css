@@ -61,3 +61,11 @@ body {
 .tabs:not(:last-child) {
   margin-bottom: 0;
 }
+
+
+/* The advance year button */
+#advance-year-button {
+  position: fixed;
+  top: 80%;
+  left: 85%;
+}
