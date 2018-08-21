@@ -33,11 +33,6 @@
   $( "#energy-number-display" ).html( energyBar.val() );
 
   // ============================================================
-  // testing purposes
-  // ============================================================
-  console.log("totalMoodScore", totalMoodScore);
-
-  // ============================================================
   // MOODS:
   // 200:     PERFECT
   // 175-199: OVERJOYED
@@ -97,11 +92,101 @@
 
 
 // ============================================================
-// Testing purposes
+// The health and energy module
 // ============================================================
-let recentEventsArray = [ 'Nick ate a turkey.', 'President Trump ate a turkey.', 'Hercule got DESTROYED by the turkey.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.', 'Lorem ipsum.' ];
-localStorage.setItem( "recentEventsArray", JSON.stringify( recentEventsArray ) );
+( function () {
+  let healthBar = $( "#health-bar" );
+  let energyBar = $( "#energy-bar" );
 
+  // ============================================================
+  // Set the health and energy bars to their proper values
+  // ============================================================
+
+}) ();
+
+
+// ============================================================
+// Bank account module
+// ============================================================
+( function () {
+
+  // ============================================================
+  // Getting the player character object that is of string type
+  // ============================================================
+  let playerCharacter = localStorage.getItem( "playerCharacter" );
+
+  // ============================================================
+  // Parsing the string into a JS object 
+  // ============================================================
+  let playerCharacterObj = JSON.parse( playerCharacter );
+
+  // ============================================================
+  // Local variables
+  // ============================================================
+  let playerBankAccountAmountDisplay = $( "#player-bank-account" );
+  let playerMonthlyIncome = $( "#player-monthly-income" );
+  let playerMonthlyExpenses = $( "#player-monthly-expenses" );
+
+  // ============================================================
+  // Assign the current value of the player's bank account to 
+  // the bank account module
+  // ============================================================
+  playerBankAccountAmountDisplay.html( playerCharacterObj.bankAccount );
+  playerMonthlyIncome.html( playerCharacterObj.monthlyIncome );
+  playerMonthlyExpenses.html( playerCharacterObj.monthlyExpenses );
+}) ();
+
+
+// ============================================================
+// PERSONAL INFO 
+// ============================================================
+( function () {
+  let playerNameDisplay = $( "#player-name-display" );
+  let playerAgeDisplay = $( "#player-age-display" );
+  let playerHomeDisplay = $( "#player-home-display" );
+  let playerHappinessDisplay = $( "#player-happiness-display" );
+  let playerDisciplineDisplay = $( "#player-discipline-display" );
+  let playerLuckDisplay = $( "#player-luck-display" );
+  let playerCharismaDisplay = $( "#player-charisma-display" );
+
+  // ============================================================
+  // Getting the player character object that is of string type
+  // ============================================================
+  let playerCharacter = localStorage.getItem( "playerCharacter" );
+
+  // ============================================================
+  // Parsing the string into a JS object 
+  // ============================================================
+  let playerCharacterObj = JSON.parse( playerCharacter );
+
+  // ============================================================
+  // Append values to the personal module
+  // ============================================================
+  playerNameDisplay.html( `${playerCharacterObj.name} (${ playerCharacterObj.archetype })` );
+  playerAgeDisplay.html( playerCharacterObj.age );
+  playerHomeDisplay.html( playerCharacterObj.home );
+  playerHappinessDisplay.html( playerCharacterObj.happiness );
+  playerDisciplineDisplay.html( playerCharacterObj.discipline );
+  playerLuckDisplay.html( playerCharacterObj.luck );
+  playerCharismaDisplay.html( playerCharacterObj.charisma );
+}) ();
+
+
+// ============================================================
+// Getting the player character object that is of string type
+// ============================================================
+let playerCharacter = localStorage.getItem( "playerCharacter" );
+
+// ============================================================
+// Parsing the string into a JS object 
+// ============================================================
+let playerCharacterObj = JSON.parse( playerCharacter );
+
+// ============================================================
+// The recent events array 
+// ============================================================
+let recentEventsArray = [ `${playerCharacterObj.name} is ready to begin life!` ];
+localStorage.setItem( "recentEventsArray", JSON.stringify( recentEventsArray ) );
 
 // ============================================================
 // Load all of the recent events from the recentEventsArray in
@@ -151,31 +236,15 @@ localStorage.setItem( "recentEventsArray", JSON.stringify( recentEventsArray ) )
     // ============================================================
     rowCounter++;
   }
-
-  // ============================================================
-  // Dealing with the personal info
-  // ============================================================
-  let playerNameDisplay = $( "#player-name-display" );
-  let playerAgeDisplay = $( "#player-age-display" );
-  let playerHomeDisplay = $( "#player-home-display" );
-  let playerStrengthDisplay = $( "#player-strength-display" );
-
-  // ============================================================
-  // Getting the player character object that is of string type
-  // ============================================================
-  let playerCharacter = localStorage.getItem( "playerCharacter" );
-
-  // ============================================================
-  // Parsing the string into a JS object 
-  // ============================================================
-  let playerCharacterObj = JSON.parse( playerCharacter );
-
-  // ============================================================
-  // Append values to the personal module
-  // ============================================================
-  playerNameDisplay.html( playerCharacterObj.name );
-  playerAgeDisplay.html( playerCharacterObj.age );
-  playerHomeDisplay.html( playerCharacterObj.home );
-  playerStrengthDisplay.html( playerCharacterObj.strength );
 }) ();
 
+// ============================================================
+// Adds a recent event to the recent events module
+// ============================================================
+function addRecentEvent ( recentEvent ) {
+  
+  // ============================================================
+  // Will need to come back to this function
+  // ============================================================
+  console.log( recentEvent );
+}
