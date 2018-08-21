@@ -68,17 +68,17 @@
                 <br>
 
                 <!-- Total balance -->
-                <p class="is-size-3">Balance: $12,099</p>
+                <p class="is-size-3">Balance: $<span id="player-bank-account">0</span></p>
 
                 <br><br>
               
-                <!-- Bills -->
-                <p class="is-size-3">Next Bill Payment: <span class="has-text-danger">7 DAYS</span></p>
+                <!-- Monthly income -->
+                <p class="is-size-3">Monthly Income: <span class="has-text-success">$<span id="player-monthly-income">0</span></span></p>
 
                 <br><br>
 
-                <!-- Paycheck -->
-                <p class="is-size-3">Next Pay Check: <span class="has-text-success">11 DAYS</span></p>
+                <!-- Monthly expenses -->
+                <p class="is-size-3">Monthly expenses: <span class="has-text-danger">-$<span id="player-monthly-expenses">0</span></span></p>
 
               </div>
 
@@ -93,25 +93,37 @@
         <br><br>
 
         <!-- Personal module -->
-        <div class="personal-info-module has-background-light has-text-black">
+        <div class="personal-info-module has-background-light has-text-black has-text-centered">
 
           <h1 class="is-size-1 has-text-centered">Personal &nbsp;<span class="icon has-text-info"><i class="fas fa-user"></i></span></h1>
 
           <hr class="black-hr">
 
           <!-- Player name -->
-          <p class="is-size-3"><u>Name</u>: <span id="player-name-display"></span></p>
+          <p class="is-size-3"><u>Name</u>:</p> 
+          <p class="is-size-3"><span id="player-name-display"></span></p>
+
+          <br>
 
           <!-- Player age -->
-          <p class="is-size-3"><u>Age</u>: <span id="player-age-display"></span></p>
+          <p class="is-size-3"><u>Age</u>:</p> 
+          <p class="is-size-3"><span id="player-age-display"></span></p>
+
+          <br>
 
           <!-- Player home -->
-          <p class="is-size-3"><u>Home</u>: <span id="player-home-display"></span></p>
+          <p class="is-size-3"><u>Home</u>:</p> 
+          <p class="is-size-3"><span id="player-home-display"></span></p>
+
+          <br>
 
           <!-- Player skills -->
           <p class="is-size-3"><u>Skills</u>:</p>
 
-          <p class="is-size-3">Strength: <span id="player-strength-display"></span></p>
+          <p class="is-size-3">Happiness: <span id="player-happiness-display"></span></p>
+          <p class="is-size-3">Discipline: <span id="player-discipline-display"></span></p>
+          <p class="is-size-3">Luck: <span id="player-luck-display"></span></p>
+          <p class="is-size-3">Charisma: <span id="player-charisma-display"></span></p>
 
         </div>
         <!-- Personal module end -->

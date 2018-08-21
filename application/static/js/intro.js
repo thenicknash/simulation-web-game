@@ -128,6 +128,31 @@ function createCharacterObjInLocalStorage () {
   playerCharacter.archetype = archetypeChoice.val();
 
   // ============================================================
+  // PLAYER'S INITIAL STATS
+  // ============================================================
+  if ( archetypeChoice.val() == "creative" ) {
+    playerCharacter.health = 100;
+    playerCharacter.energy = 15;
+  }
+  else if ( archetypeChoice.val() == "balanced" ) {
+    playerCharacter.health = 85;
+    playerCharacter.energy = 30;
+  }
+  else {
+    playerCharacter.health = 70;
+    playerCharacter.energy = 45;
+  }
+
+  playerCharacter.luck = 1;
+  playerCharacter.charisma = 1;
+  playerCharacter.discipline = 1;
+  playerCharacter.happiness = 1;
+  playerCharacter.meaning = 1;
+  playerCharacter.bankAccount = 100;
+  playerCharacter.monthlyIncome = 0;
+  playerCharacter.monthlyExpenses = 1000;
+
+  // ============================================================
   // Set the player object's age
   // ============================================================
   playerCharacter.age = 18;
