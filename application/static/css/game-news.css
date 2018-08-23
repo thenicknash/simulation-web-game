@@ -1,0 +1,11 @@
+/* News tiles */
+#global-news,
+#national-news,
+#local-news {
+  padding: 1em 2em;
+}
+
+/* News story rows */
+.news-story-row {
+  padding: 0.2em 1em;
+}
