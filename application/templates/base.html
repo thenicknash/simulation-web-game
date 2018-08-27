@@ -17,14 +17,26 @@
   </head>
   <body>
 
-    <!-- HTML -->
-    {% block body %}{% endblock %}
+      <!-- HTML -->
+      {% block body %}{% endblock %}
+
+      <!-- Advance year button -->
+      <button id="advance-year-button" class="button is-large has-background-success has-text-white"><i class="fas fa-arrow-right"></i></button>
+
+      <!-- The snackbar for turn advancing -->
+      <div id="snackbar">One year has passed . . .</div>
+
+      <!-- Overlay for turn advancing -->
+      <div id="overlay" class="display-off">
+      </div>
 
   </body>
 
   <!-- JS -->
   <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src=" {{ url_for( 'static', filename='js/page-updater.js' ) }} "></script>
+  <script src=" {{ url_for( 'static', filename='js/universal-scripts.js' ) }} "></script>
 
   {% block scripts %}{% endblock %}
 

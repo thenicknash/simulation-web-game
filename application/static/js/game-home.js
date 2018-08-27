@@ -7,8 +7,58 @@
 
 
 // ============================================================
+// The health and energy module
+// ============================================================
+( function () {
+
+  // ============================================================
+  // local variables
+  // ============================================================
+  let healthBar = $( "#health-bar" );
+  let energyBar = $( "#energy-bar" );
+  let healthNumberDisplay = $( "#health-number-display" );
+  let maxHealthNumberDisplay = $( "#maximum-health-number-display" );
+  let energyNumberDisplay = $( "#energy-number-display" );
+  let maxEnergyNumberDisplay = $( "#maximum-energy-number-display" );
+
+  // ============================================================
+  // Getting the player character object that is of string type
+  // ============================================================
+  let playerCharacter = localStorage.getItem( "playerCharacter" );
+
+  // ============================================================
+  // Parsing the string into a JS object 
+  // ============================================================
+  let playerCharacterObj = JSON.parse( playerCharacter );
+
+  // ============================================================
+  // Set the health and energy bars to their proper values
+  // ============================================================
+  healthBar.val( playerCharacterObj.health );
+  healthBar.attr( 'max', playerCharacterObj.maxHealth );
+
+  energyBar.val( playerCharacterObj.energy );
+  energyBar.attr( 'max', playerCharacterObj.maxEnergy );
+
+  // ============================================================
+  // Set the health and energy display values to their proper
+  // values based on the bars
+  // ============================================================
+  healthNumberDisplay.html( playerCharacterObj.health );
+  maxHealthNumberDisplay.html( playerCharacterObj.maxHealth );
+
+  energyNumberDisplay.html( playerCharacterObj.energy );
+  maxEnergyNumberDisplay.html( playerCharacterObj.maxEnergy );
+  
+}) ();
+
+
+// ============================================================
 // MOOD CALCULATOR:
 // Using a self-invoking function expression
+// ============================================================
+// This may need to be tweaked to be based on a percentage
+// rather than a strictly numerical scale
 // ============================================================
 ( function () {
 
@@ -89,20 +139,6 @@
     currentMood.addClass( "has-text-danger" );
   }
 } ) ();
-
-
-// ============================================================
-// The health and energy module
-// ============================================================
-( function () {
-  let healthBar = $( "#health-bar" );
-  let energyBar = $( "#energy-bar" );
-
-  // ============================================================
-  // Set the health and energy bars to their proper values
-  // ============================================================
-
-}) ();
 
 
 // ============================================================
@@ -237,6 +273,7 @@ localStorage.setItem( "recentEventsArray", JSON.stringify( recentEventsArray ) )
     rowCounter++;
   }
 }) ();
+
 
 // ============================================================
 // Adds a recent event to the recent events module
