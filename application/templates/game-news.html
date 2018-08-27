@@ -8,12 +8,78 @@
 <!-- local CSS -->
 {% block css %}
   <link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
-  <link rel="stylesheet" href=" {{ url_for( 'static', filename='css/base-game.css' ) }} ">
+  <link rel="stylesheet" href=" {{ url_for( 'static', filename='css/universal-styles.css' ) }} ">
+  <link rel="stylesheet" href=" {{ url_for( 'static', filename='css/game-news.css' ) }} ">
 {% endblock %}
 
 <!-- Content -->
 {% block body %}
-  
+
+  <div class="has-background-dark has-text-white">
+    <section class="section">
+      <div class="container">
+
+        <!-- Banner -->
+        {% include '_header.html' %}
+        <!-- Banner end -->
+
+        <!-- Tiles -->
+        <div class="tile is-ancestor">
+
+          <!-- All other tile elemnts -->
+          <div class="tile is-7 is-vertical is-parent">
+
+            <!-- Top tile -->
+            <!-- global News -->
+            <div id="global-news" class="tile is-child has-background-light has-text-black">
+
+              <h1 class="is-size-2 has-text-centered">Global News &nbsp;<span class="icon"><i class="fas fa-globe-americas"></i></span></h1>
+
+              <hr class="black-hr">
+
+              <div class="global-news-stories"></div>
+
+            </div>
+            <!-- global News end -->
+
+            <!-- Bottom tile -->
+            <!-- National News -->
+            <div id="national-news" class="tile is-child has-background-light has-text-black">
+              
+              <h1 class="is-size-2 has-text-centered">National News &nbsp;<span class="icon"><i class="fas fa-tv"></i></span></h1>
+
+              <hr class="black-hr">
+
+              <div class="national-news-stories"></div>
+
+            </div>
+            <!-- National News end -->
+
+          </div>
+
+          <!-- This tile will take up the whole vertical space -->
+          <div class="tile is-parent">
+
+            <!-- Local News -->
+            <div id="local-news" class="tile is-child has-background-light has-text-black">
+              
+              <h1 class="is-size-2 has-text-centered">Local News &nbsp;<span class="icon"><i class="fas fa-newspaper"></i></span></h1>
+
+              <hr class="black-hr">
+
+              <div class="local-news-stories"></div>
+
+            </div>
+            <!-- Local News end -->
+
+          </div>
+
+        </div>
+        <!-- Tiles end -->
+
+      </div>
+    </section>
+  </div>
 
   <!-- tab navigation -->
   {% include '_tabs.html' %}
