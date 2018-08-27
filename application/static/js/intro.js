@@ -132,30 +132,48 @@ function createCharacterObjInLocalStorage () {
   // ============================================================
   if ( archetypeChoice.val() == "creative" ) {
     playerCharacter.health = 100;
+    playerCharacter.maxHealth = 100;
     playerCharacter.energy = 15;
+    playerCharacter.maxEnergy = 15;
   }
   else if ( archetypeChoice.val() == "balanced" ) {
     playerCharacter.health = 85;
+    playerCharacter.maxHealth = 85;
     playerCharacter.energy = 30;
+    playerCharacter.maxEnergy = 30;
   }
   else {
     playerCharacter.health = 70;
+    playerCharacter.maxHealth = 70;
     playerCharacter.energy = 45;
+    playerCharacter.maxEnergy = 45;
   }
 
+  // ============================================================
+  // Player character skills
+  // ============================================================
   playerCharacter.luck = 1;
   playerCharacter.charisma = 1;
   playerCharacter.discipline = 1;
   playerCharacter.happiness = 1;
   playerCharacter.meaning = 1;
-  playerCharacter.bankAccount = 100;
+
+  // ============================================================
+  // Player character bank, income, and expenses
+  // ============================================================
+  playerCharacter.bankAccount = 0;
   playerCharacter.monthlyIncome = 0;
-  playerCharacter.monthlyExpenses = 1000;
+  playerCharacter.monthlyExpenses = 0;
+
+  // ============================================================
+  // Player character job 
+  // ============================================================
+  playerCharacter.job = "";
 
   // ============================================================
   // Set the player object's age
   // ============================================================
-  playerCharacter.age = 18;
+  playerCharacter.age = 0;
 
   // ============================================================
   // TESTING ONLY:
