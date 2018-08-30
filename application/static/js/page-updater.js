@@ -23,15 +23,11 @@ function updateHealthAndEnergyModule () {
   let maxEnergyNumberDisplay = $( "#maximum-energy-number-display" );
 
   // ============================================================
-  // Getting the player character object that is of string type
+  // This function returns the player character object from 
+  // localStorage
   // ============================================================
-  let playerCharacter = localStorage.getItem( "playerCharacter" );
-
-  // ============================================================
-  // Parsing the string into a JS object 
-  // ============================================================
-  let playerCharacterObj = JSON.parse( playerCharacter );
-
+  let playerCharacterObj = returnPlayerCharacterObject();
+  
   // ============================================================
   // Update health
   // ============================================================
@@ -56,8 +52,6 @@ function updateHealthAndEnergyModule () {
 // Update the personal info module
 // ============================================================
 function updatePersonalInfoModule () {
-
-  console.log( "updatePersonalInfoModule function called" );
   
   // ============================================================
   // Local variables
@@ -71,14 +65,10 @@ function updatePersonalInfoModule () {
   let playerCharismaDisplay = $( "#player-charisma-display" );
 
   // ============================================================
-  // Getting the player character object that is of string type
+  // This function returns the player character object from 
+  // localStorage
   // ============================================================
-  let playerCharacter = localStorage.getItem( "playerCharacter" );
-
-  // ============================================================
-  // Parsing the string into a JS object 
-  // ============================================================
-  let playerCharacterObj = JSON.parse( playerCharacter );
+  let playerCharacterObj = returnPlayerCharacterObject();
 
   // ============================================================
   // Append values to the personal module

@@ -147,14 +147,10 @@
 ( function () {
 
   // ============================================================
-  // Getting the player character object that is of string type
+  // This function returns the player character object from 
+  // localStorage
   // ============================================================
-  let playerCharacter = localStorage.getItem( "playerCharacter" );
-
-  // ============================================================
-  // Parsing the string into a JS object 
-  // ============================================================
-  let playerCharacterObj = JSON.parse( playerCharacter );
+  let playerCharacterObj = returnPlayerCharacterObject();
 
   // ============================================================
   // Local variables
@@ -186,19 +182,15 @@
   let playerCharismaDisplay = $( "#player-charisma-display" );
 
   // ============================================================
-  // Getting the player character object that is of string type
+  // This function returns the player character object from 
+  // localStorage
   // ============================================================
-  let playerCharacter = localStorage.getItem( "playerCharacter" );
-
-  // ============================================================
-  // Parsing the string into a JS object 
-  // ============================================================
-  let playerCharacterObj = JSON.parse( playerCharacter );
+  let playerCharacterObj = returnPlayerCharacterObject();
 
   // ============================================================
   // Append values to the personal module
   // ============================================================
-  playerNameDisplay.html( `${playerCharacterObj.name} (${ playerCharacterObj.archetype })` );
+  playerNameDisplay.html( playerCharacterObj.name );
   playerAgeDisplay.html( playerCharacterObj.age );
   playerHomeDisplay.html( playerCharacterObj.home );
   playerHappinessDisplay.html( playerCharacterObj.happiness );
@@ -207,16 +199,11 @@
   playerCharismaDisplay.html( playerCharacterObj.charisma );
 }) ();
 
-
 // ============================================================
-// Getting the player character object that is of string type
+// This function returns the player character object from 
+// localStorage
 // ============================================================
-let playerCharacter = localStorage.getItem( "playerCharacter" );
-
-// ============================================================
-// Parsing the string into a JS object 
-// ============================================================
-let playerCharacterObj = JSON.parse( playerCharacter );
+let playerCharacterObj = returnPlayerCharacterObject();
 
 // ============================================================
 // The recent events array 
@@ -284,4 +271,68 @@ function addRecentEvent ( recentEvent ) {
   // Will need to come back to this function
   // ============================================================
   console.log( recentEvent );
+}
+
+
+// ============================================================
+// Binding a click event to the go to the doctor button
+// ============================================================
+let goToDoctorButton = $( "#goToDoctorButton" )
+goToDoctorButton.click( function () {
+  goToTheDoctor();
+});
+
+
+// ============================================================
+// This function sends your player to the doctor in order to 
+// regenerate health
+// ============================================================
+function goToTheDoctor () {
+
+  // ============================================================
+  // Get the character object
+  // ============================================================
+  let playerCharacterObj = returnPlayerCharacterObject();
+
+  // ============================================================
+  // If the player is under 18, there will be no charge for going
+  // to the doctor as the parent(s) will pay for the visit;
+  // Else, you must pay a doctor's fee ($150 for now)
+  // ============================================================
+  let doctorFee = 0;
+
+  if ( playerCharacterObj.age >= 18 ) {
+    doctorFee = 150;
+  }
+
+  playerCharacterObj.bankAccount -= doctorFee;
+
+  // ============================================================
+  // Add health back to the player
+  // ============================================================
+  playerCharacterObj.health += 50;
+
+  // ============================================================
+  // Make sure that health value is not greater than the max 
+  // health
+  // ============================================================
+  if ( playerCharacterObj.health > playerCharacterObj.maxHealth ) {
+    playerCharacterObj.health = playerCharacterObj.maxHealth;
+  }
+
+  // ============================================================
+  // Set the values of the player obj
+  // ============================================================
+  setPlayerCharacterObject( playerCharacterObj );
+
+  // ============================================================
+  // Updates the health and energy UI module
+  // ============================================================
+  updateHealthAndEnergyModule();
+
+  // ============================================================
+  // Create a UX letting the user know an action has taken place
+  // ============================================================
+  let message = "You had a great check up!";
+  makeSnackbarAndOverlayAppear( message );
 }

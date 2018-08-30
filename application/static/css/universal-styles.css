@@ -14,6 +14,11 @@ body {
   background-color: #000;
 }
 
+.black-hr-no-margin {
+  background-color: #000;
+  margin: 0 0 1.5rem 0;
+}
+
 
 /* Making the tabs not transparent */
 .tabs li {
@@ -74,6 +79,7 @@ body {
   position: fixed;
   top: 80%;
   left: 90%;
+  border-color: #23d160;
 }
 
 /* Make the advance year button responsive */
