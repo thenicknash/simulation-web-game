@@ -120,6 +120,7 @@ function advanceYear () {
   // 9. Update the current page
   // ============================================================
   ageThePlayerByOne();
+  degenerateHealth();
 
 
   // ============================================================
@@ -135,22 +136,16 @@ function advanceYear () {
 function ageThePlayerByOne () {
 
   // ============================================================
-  // Getting the player character object that is of string type
+  // This function returns the player character object from 
+  // localStorage
   // ============================================================
-  let playerCharacter = localStorage.getItem( "playerCharacter" );
-
-  // ============================================================
-  // Parsing the string into a JS object 
-  // ============================================================
-  let playerCharacterObj = JSON.parse( playerCharacter );
+  let playerCharacterObj = returnPlayerCharacterObject();
 
   // ============================================================
   // Add 1 to the player's age
   // ============================================================
   playerCharacterObj.age = Number( playerCharacterObj.age ) + 1;
   
-  console.log( playerCharacterObj );
-
   // ============================================================
   // Re-set the player character object into localStorage
   // ============================================================
@@ -164,14 +159,10 @@ function ageThePlayerByOne () {
 function balanceBankAccount () {
 
   // ============================================================
-  // Getting the player character object that is of string type
+  // This function returns the player character object from 
+  // localStorage
   // ============================================================
-  let playerCharacter = localStorage.getItem( "playerCharacter" );
-
-  // ============================================================
-  // Parsing the string into a JS object 
-  // ============================================================
-  let playerCharacterObj = JSON.parse( playerCharacter );
+  let playerCharacterObj = returnPlayerCharacterObject();
 
   // ============================================================
   // Get the bank account, monthly income, and monthly expenses
@@ -204,7 +195,8 @@ function updatePageOnAdvanceYearButtonClick () {
   // Make the snackbar & overlay appear indicating that a year 
   // has passed
   // ============================================================
-  makeSnackbarAndOverlayAppear();
+  let message = "One year has passed . . .";
+  makeSnackbarAndOverlayAppear( message );
 }
 
 
@@ -212,25 +204,85 @@ function updatePageOnAdvanceYearButtonClick () {
 // This function makes the snackbar & overlay appear informing 
 // the user that a year has occurred
 // ============================================================
-function makeSnackbarAndOverlayAppear () {
+function makeSnackbarAndOverlayAppear ( message ) {
   // ============================================================
   // Get the snackbar DIV
   // ============================================================
   var snackbar = $( "#snackbar" );
+  var overlay  = $( "#overlay" );
+
+  // ============================================================
+  // Setting the message of the snackbar
+  // ============================================================
+  snackbar.html( message );
 
   // ============================================================
   // Add the "show" class to DIV
   // ============================================================
   snackbar.addClass( "show" );
-  $( "#overlay" ).removeClass( "display-off" );
-  $( "#overlay" ).addClass( "display-on" );
+  overlay.removeClass( "display-off" );
+  overlay.addClass( "display-on" );
 
   // ============================================================
   // After 3 seconds, remove the show class from DIV
   // ============================================================
   setTimeout( function () { 
     snackbar.removeClass( "show" );
-    $( "#overlay" ).removeClass( "display-on" );
-    $( "#overlay" ).addClass( "display-off" );
+    overlay.removeClass( "display-on" );
+    overlay.addClass( "display-off" );
   }, 3000);
+}
+
+
+// ============================================================
+// This function returns the player character object from 
+// localStorage
+// ============================================================
+function returnPlayerCharacterObject () {
+  // ============================================================
+  // Getting the player character object that is of string type
+  // ============================================================
+  let playerCharacter = localStorage.getItem( "playerCharacter" );
+
+  // ============================================================
+  // Parsing the string into a JS object 
+  // ============================================================
+  let playerCharacterObj = JSON.parse( playerCharacter );
+
+  return playerCharacterObj;
+}
+
+
+// ============================================================
+// Sets the player character object in localStorage
+// ============================================================
+function setPlayerCharacterObject ( playerCharacterObj ) {
+  localStorage.setItem( "playerCharacter", JSON.stringify( playerCharacterObj ) );
+}
+
+
+// ============================================================
+// Makes the player lose health points
+// ============================================================
+function degenerateHealth () {
+
+  // ============================================================
+  // Get the character object
+  // ============================================================
+  let playerCharacterObj = returnPlayerCharacterObject();
+
+  // ============================================================
+  // Update the health value of the player
+  // ============================================================
+  playerCharacterObj.health -= 10;
+
+  // ============================================================
+  // Make sure player health does not fall below zero
+  // ============================================================
+  if ( playerCharacterObj.health < 0 ) playerCharacterObj.health = 0;
+
+  // ============================================================
+  // Sets the player object in localStorage
+  // ============================================================
+  setPlayerCharacterObject( playerCharacterObj );
 }

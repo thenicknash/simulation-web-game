@@ -92,41 +92,92 @@
 
         <br><br>
 
-        <!-- Personal module -->
-        <div class="personal-info-module has-background-light has-text-black has-text-centered">
+        <!-- Personal & actions module -->
+        <div class="columns is-desktop">
 
-          <h1 class="is-size-1 has-text-centered">Personal &nbsp;<span class="icon has-text-info"><i class="fas fa-user"></i></span></h1>
+          <!-- Personal module -->
+          <div class="column">
+            <div class="personal-info-module has-background-light has-text-black has-text-centered">
 
-          <hr class="black-hr">
+              <h1 class="is-size-1 has-text-centered">Personal &nbsp;<span class="icon has-text-info"><i class="fas fa-user"></i></span></h1>
+    
+              <hr class="black-hr">
+    
+              <!-- Player name -->
+              <p class="is-size-3"><u>Name</u>:</p> 
+              <p class="is-size-3"><span id="player-name-display"></span></p>
+    
+              <br>
+    
+              <!-- Player age -->
+              <p class="is-size-3"><u>Age</u>:</p> 
+              <p class="is-size-3"><span id="player-age-display"></span></p>
+    
+              <br>
+    
+              <!-- Player home -->
+              <p class="is-size-3"><u>Home</u>:</p> 
+              <p class="is-size-3"><span id="player-home-display"></span></p>
+    
+              <br>
+    
+              <!-- Player skills -->
+              <p class="is-size-3"><u>Skills</u>:</p>
+    
+              <p class="is-size-3">Happiness: <span id="player-happiness-display"></span></p>
+              <p class="is-size-3">Discipline: <span id="player-discipline-display"></span></p>
+              <p class="is-size-3">Luck: <span id="player-luck-display"></span></p>
+              <p class="is-size-3">Charisma: <span id="player-charisma-display"></span></p>
+    
+            </div>
+          </div>
+          <!-- Personal module end -->
 
-          <!-- Player name -->
-          <p class="is-size-3"><u>Name</u>:</p> 
-          <p class="is-size-3"><span id="player-name-display"></span></p>
+          <br><br>
 
-          <br>
+          <!-- Actions module -->
+          <div class="column">
+            <div class="actions-module has-background-light has-text-black has-text-centered">
 
-          <!-- Player age -->
-          <p class="is-size-3"><u>Age</u>:</p> 
-          <p class="is-size-3"><span id="player-age-display"></span></p>
+              <h1 class="is-size-1 has-text-centered">Actions &nbsp;<span class="icon has-text-primary"><i class="fas fa-check"></i></span></h1>
+  
+              <hr class="black-hr">
 
-          <br>
+              <!-- Go to the doctor -->
+              <div class="columns is-size-3">
 
-          <!-- Player home -->
-          <p class="is-size-3"><u>Home</u>:</p> 
-          <p class="is-size-3"><span id="player-home-display"></span></p>
+                <div class="column">
+                  Go to the doctor 
+                </div>
 
-          <br>
+                <div class="column is-one-fifth">
+                  <button id="goToDoctorButton" class="button is-primary button-margin-adjuster"> >> </button>
+                </div>
 
-          <!-- Player skills -->
-          <p class="is-size-3"><u>Skills</u>:</p>
+              </div>
 
-          <p class="is-size-3">Happiness: <span id="player-happiness-display"></span></p>
-          <p class="is-size-3">Discipline: <span id="player-discipline-display"></span></p>
-          <p class="is-size-3">Luck: <span id="player-luck-display"></span></p>
-          <p class="is-size-3">Charisma: <span id="player-charisma-display"></span></p>
+              <hr class="black-hr-no-margin">
+
+              <!-- Go out on the town -->
+              <div class="columns is-size-3">
+
+                  <div class="column">
+                    Go out on the town
+                  </div>
+  
+                  <div class="column is-one-fifth">
+                    <button id="goOutOnTownButton" class="button is-primary button-margin-adjuster"> >> </button>
+                  </div>
+  
+                </div>
+
+            </div>
+          </div>
+          <!-- Actions module end -->
 
         </div>
-        <!-- Personal module end -->
+        
+        <!-- Personal & actions module end -->
 
         <br><br>
 
