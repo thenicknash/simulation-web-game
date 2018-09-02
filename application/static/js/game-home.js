@@ -326,9 +326,10 @@ function goToTheDoctor () {
   setPlayerCharacterObject( playerCharacterObj );
 
   // ============================================================
-  // Updates the health and energy UI module
+  // Updates the health and energy and bank account UI modules
   // ============================================================
   updateHealthAndEnergyModule();
+  updateBankAccountModule();
 
   // ============================================================
   // Create a UX letting the user know an action has taken place

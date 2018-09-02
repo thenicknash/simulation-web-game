@@ -81,3 +81,30 @@ function updatePersonalInfoModule () {
   playerLuckDisplay.html( playerCharacterObj.luck );
   playerCharismaDisplay.html( playerCharacterObj.charisma );
 }
+
+
+// ============================================================
+// Update the bank account module
+// ============================================================
+function updateBankAccountModule () {
+
+  // ============================================================
+  // Local variables
+  // ============================================================
+  let playerBankAccount = $( "#player-bank-account" );
+  let playerMonthlyIncome = $( "#player-monthly-income" );
+  let playerMonthlyExpenses = $( "#player-monthly-expenses" );
+
+  // ============================================================
+  // This function returns the player character object from 
+  // localStorage
+  // ============================================================
+  let playerCharacterObj = returnPlayerCharacterObject();
+
+  // ============================================================
+  // Adjust the HTML
+  // ============================================================
+  playerBankAccount.html( playerCharacterObj.bankAccount );
+  playerMonthlyIncome.html( playerCharacterObj.monthlyIncome );
+  playerMonthlyExpenses.html( playerCharacterObj.monthlyExpenses );
+}
