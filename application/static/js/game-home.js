@@ -60,7 +60,7 @@
 // This may need to be tweaked to be based on a percentage
 // rather than a strictly numerical scale
 // ============================================================
-( function () {
+function moodCalculator () {
 
   // ============================================================
   // Local variables
@@ -138,7 +138,8 @@
     currentMood.html("Suicidal");
     currentMood.addClass( "has-text-danger" );
   }
-} ) ();
+}
+moodCalculator();
 
 
 // ============================================================
