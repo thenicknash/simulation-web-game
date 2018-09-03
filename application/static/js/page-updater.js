@@ -45,6 +45,11 @@ function updateHealthAndEnergyModule () {
 
   energyNumberDisplay.html( playerCharacterObj.energy );
   maxEnergyNumberDisplay.html( playerCharacterObj.maxEnergy );
+
+  // ============================================================
+  // Update mood
+  // ============================================================
+  moodCalculator();
 }
 
 
