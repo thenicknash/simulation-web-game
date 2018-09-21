@@ -16,10 +16,10 @@ Currently, Life Simulator is in pre-alpha stage. The only way to play is to down
 ![New Game Screen](https://github.com/thenicknash/simulation-web-game/blob/master/images/Life-Simulator-Screenshot-1-Pre-Alpha.png)
 
 #### The current home screen.
-![Home Screen](https://github.com/thenicknash/simulation-web-game/blob/master/images/Life-Simulator-Screenshot-2-Pre-Alpha.png)
+![Home Screen](https://github.com/thenicknash/simulation-web-game/blob/master/images/Life-Simulator-Screenshot-3-Pre-Alpha.png)
 
 #### The current career screen.
-![Career Screen](https://github.com/thenicknash/simulation-web-game/blob/master/images/Life-Simulator-Screenshot-3-Pre-Alpha.png)
+![Career Screen](https://github.com/thenicknash/simulation-web-game/blob/master/images/Life-Simulator-Screenshot-2-Pre-Alpha.png)
 
 There are more pictures to come as development continues!
 
