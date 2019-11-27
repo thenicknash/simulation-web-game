@@ -1,5 +1,9 @@
 "use strict"
 
+// ============================================================
+// This file deals with the new game introduction form
+// ============================================================
+
 let introObject = {
 
   playerName = null,
