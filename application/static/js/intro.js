@@ -6,21 +6,21 @@
 
 let introObject = {
 
-  playerName = null,
-  playerHome = null,
-  archetype = null,
-  characterObj = {},
+  playerName: null,
+  playerHome: null,
+  archetype: null,
+  characterObj: {},
 
-  bindEvents: () => {
+  bindEvents: function () {
     let self = this
 
     // Page submit button
-    $( "#submit-new-player-button" ).click( () => {
-      self.errorValidation()
+    $( "#submit-new-player-button" ).click( function () {
+      introObject.errorValidation()
     })
   },
 
-  errorValidation: () => {
+  errorValidation: function () {
     let self = this
 
     // Player name:
@@ -80,10 +80,10 @@ let introObject = {
     self.archetype = archetype
 
     // Create the character object in local storage
-    self.createCharObj();
+    introObject.createCharObj();
   },
 
-  createCharObj: () => {
+  createCharObj: function () {
     let self = this
     
     // Set player's initial stats
@@ -93,7 +93,7 @@ let introObject = {
       self.characterObj.energy = 15;
       self.characterObj.maxEnergy = 15;
     }
-    else if ( aself.archetype == 'balanced' ) {
+    else if ( self.archetype == 'balanced' ) {
       self.characterObj.health = 85;
       self.characterObj.maxHealth = 85;
       self.characterObj.energy = 30;
@@ -125,7 +125,10 @@ let introObject = {
     // Store the object in localStorage; you have to stringify the
     // object due to localStorage only handling key value pairs and
     // string values
-    localStorage.setItem( "playerCharacter", JSON.stringify( playerCharacter ) );
+    localStorage.setItem( "playerCharacter", JSON.stringify( self.characterObj ) );
+
+    // Redirect to main game page
+    window.location.href = 'http://127.0.0.1:5000/game/home'
   }
 
 }
