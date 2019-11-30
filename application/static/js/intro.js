@@ -125,7 +125,7 @@ let introObject = {
     // Store the object in localStorage; you have to stringify the
     // object due to localStorage only handling key value pairs and
     // string values
-    localStorage.setItem( "playerCharacter", JSON.stringify( self.characterObj ) );
+    localStorage.setItem( "characterObj", JSON.stringify( self.characterObj ) );
 
     // Redirect to main game page
     window.location.href = 'http://127.0.0.1:5000/game/home'
