@@ -66,7 +66,7 @@ let introObject = {
     }
 
     // Archetype:
-    // 1. A choice must be made; cannot be blank
+    // 1. A choice must be made cannot be blank
     let archetype = $( "[name=archetype-choice]:checked" )
 
     if ( archetype.val() === undefined ) {
@@ -75,12 +75,12 @@ let introObject = {
     }
 
     // Set object's properties
-    self.playerName = playerName
-    self.playerHome = playerHome
-    self.archetype = archetype
+    self.playerName = playerName.val()
+    self.playerHome = playerHome.val()
+    self.archetype = archetype.val()
 
     // Create the character object in local storage
-    introObject.createCharObj();
+    introObject.createCharObj()
   },
 
   createCharObj: function () {
@@ -88,44 +88,49 @@ let introObject = {
     
     // Set player's initial stats
     if ( self.archetype == 'creative' ) {
-      self.characterObj.health = 100;
-      self.characterObj.maxHealth = 100;
-      self.characterObj.energy = 15;
-      self.characterObj.maxEnergy = 15;
+      self.characterObj.health = 100
+      self.characterObj.maxHealth = 100
+      self.characterObj.energy = 15
+      self.characterObj.maxEnergy = 15
     }
     else if ( self.archetype == 'balanced' ) {
-      self.characterObj.health = 85;
-      self.characterObj.maxHealth = 85;
-      self.characterObj.energy = 30;
-      self.characterObj.maxEnergy = 30;
+      self.characterObj.health = 85
+      self.characterObj.maxHealth = 85
+      self.characterObj.energy = 30
+      self.characterObj.maxEnergy = 30
     }
     else {
-      self.characterObj.health = 70;
-      self.characterObj.maxHealth = 70;
-      self.characterObj.energy = 45;
-      self.characterObj.maxEnergy = 45;
+      self.characterObj.health = 70
+      self.characterObj.maxHealth = 70
+      self.characterObj.energy = 45
+      self.characterObj.maxEnergy = 45
     }
 
+    // Set player's personal info
+    self.characterObj.name = self.playerName
+    self.characterObj.home = self.playerHome
+    self.characterObj.archetype = self.archetype
+
     // Set player's base skill levels
-    self.characterObj.luck = 1;
-    self.characterObj.charisma = 1;
-    self.characterObj.discipline = 1;
-    self.characterObj.happiness = 1;
-    self.characterObj.meaning = 1;
+    self.characterObj.luck = 1
+    self.characterObj.charisma = 1
+    self.characterObj.discipline = 1
+    self.characterObj.happiness = 1
+    self.characterObj.meaning = 1
 
     // Set player's bank, income, job, and expenses
-    self.characterObj.bankAccount = 0;
-    self.characterObj.monthlyIncome = 0;
-    self.characterObj.monthlyExpenses = 0;
-    self.characterObj.job = null;
+    self.characterObj.bankAccount = 0
+    self.characterObj.monthlyIncome = 0
+    self.characterObj.monthlyExpenses = 0
+    self.characterObj.job = null
 
     // Set the player's age
-    self.characterObj.age = 0;
+    self.characterObj.age = 0
 
-    // Store the object in localStorage; you have to stringify the
+    // Store the object in localStorage you have to stringify the
     // object due to localStorage only handling key value pairs and
     // string values
-    localStorage.setItem( "characterObj", JSON.stringify( self.characterObj ) );
+    localStorage.setItem( "characterObj", JSON.stringify( self.characterObj ) )
 
     // Redirect to main game page
     window.location.href = 'http://127.0.0.1:5000/game/home'
