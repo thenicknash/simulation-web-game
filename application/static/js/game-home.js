@@ -1,340 +1,191 @@
 "use strict";
 
+let homeObj = {
 
-// ============================================================
-// JS for the game home page
-// ============================================================
+  mood: null,
 
+  bindEvents: function () {
+    let self = this
 
-// ============================================================
-// The health and energy module
-// ============================================================
-( function () {
+    $( "#goToDoctorButton" ).click( function () {
+      eventsObj.goToDoctor()
+    });
+  },
 
-  // ============================================================
-  // local variables
-  // ============================================================
-  let healthBar = $( "#health-bar" );
-  let energyBar = $( "#energy-bar" );
-  let healthNumberDisplay = $( "#health-number-display" );
-  let maxHealthNumberDisplay = $( "#maximum-health-number-display" );
-  let energyNumberDisplay = $( "#energy-number-display" );
-  let maxEnergyNumberDisplay = $( "#maximum-energy-number-display" );
+  updateUi: function () {
+    let self = this
 
-  // ============================================================
-  // Getting the player character object that is of string type
-  // ============================================================
-  let playerCharacter = localStorage.getItem( "playerCharacter" );
-
-  // ============================================================
-  // Parsing the string into a JS object 
-  // ============================================================
-  let playerCharacterObj = JSON.parse( playerCharacter );
-
-  // ============================================================
-  // Set the health and energy bars to their proper values
-  // ============================================================
-  healthBar.val( playerCharacterObj.health );
-  healthBar.attr( 'max', playerCharacterObj.maxHealth );
-
-  energyBar.val( playerCharacterObj.energy );
-  energyBar.attr( 'max', playerCharacterObj.maxEnergy );
-
-  // ============================================================
-  // Set the health and energy display values to their proper
-  // values based on the bars
-  // ============================================================
-  healthNumberDisplay.html( playerCharacterObj.health );
-  maxHealthNumberDisplay.html( playerCharacterObj.maxHealth );
-
-  energyNumberDisplay.html( playerCharacterObj.energy );
-  maxEnergyNumberDisplay.html( playerCharacterObj.maxEnergy );
-  
-}) ();
-
-
-// ============================================================
-// MOOD CALCULATOR:
-// Using a self-invoking function expression
-// ============================================================
-// This may need to be tweaked to be based on a percentage
-// rather than a strictly numerical scale
-// ============================================================
-function moodCalculator () {
-
-  // ============================================================
-  // Local variables
-  // ============================================================
-  let healthBar = $( "#health-bar" );
-  let energyBar = $( "#energy-bar" );
-  let currentMood = $( "#current-mood");
-
-  // ============================================================
-  // The total number of adding health and energy will be used to
-  // determine what the player's mood is
-  // ============================================================
-  let totalMoodScore = healthBar.val() + energyBar.val();
-  if ( totalMoodScore < 0 ) totalMoodScore = 0;
-
-  // ============================================================
-  // Dispaly health & energy values in numerical form
-  // ============================================================
-  $( "#health-number-display" ).html( healthBar.val() );
-  $( "#energy-number-display" ).html( energyBar.val() );
-
-  // ============================================================
-  // MOODS:
-  // 200:     PERFECT
-  // 175-199: OVERJOYED
-  // 150-174: ELATED
-  // 110-149: HAPPY
-  // 90-109:  CONTENT
-  // 70-89:   DISGRUNTLED
-  // 50-69:   UPSET
-  // 25-49:   FURIOUS
-  // 1-24:    DEPRESSED
-  // 0:       SUICIDAL
-  // ============================================================
-  // This conditional block appends the mood text and adds the
-  // appropriate font color through a Bulma text color CSS class
-  // ============================================================
-  if ( totalMoodScore >= 200 ) {
-    currentMood.html( "Perfect" );
-    currentMood.addClass( "has-text-success" );
-  }
-  else if ( totalMoodScore < 200 && totalMoodScore >= 175 ) {
-    currentMood.html( "Overjoyed" );
-    currentMood.addClass( "has-text-success" );
-  }
-  else if ( totalMoodScore < 175 && totalMoodScore >= 150 ) {
-    currentMood.html( "Elated" );
-    currentMood.addClass( "has-text-success" );
-  }
-  else if ( totalMoodScore < 150 && totalMoodScore >= 110 ) {
-    currentMood.html( "Happy" );
-    currentMood.addClass( "has-text-info" );
-  }
-  else if ( totalMoodScore < 110 && totalMoodScore >= 90 ) {
-    currentMood.html( "Content" );
-    currentMood.addClass( "has-text-info" );
-  }
-  else if ( totalMoodScore < 90 && totalMoodScore >= 70 ) {
-    currentMood.html( "Disgruntled" );
-    currentMood.addClass( "has-text-info" );
-  }
-  else if ( totalMoodScore < 70 && totalMoodScore >= 50 ) {
-    currentMood.html( "Upset" );
-    currentMood.addClass( "has-text-danger" );
-  }
-  else if ( totalMoodScore < 50 && totalMoodScore >= 25 ) {
-    currentMood.html( "Furious" );
-    currentMood.addClass( "has-text-danger" );
-  }
-  else if ( totalMoodScore < 25 && totalMoodScore >= 1 ) {
-    currentMood.html( "Depressed" );
-    currentMood.addClass( "has-text-danger" );
-  }
-  else {
-    currentMood.html("Suicidal");
-    currentMood.addClass( "has-text-danger" );
-  }
-}
-moodCalculator();
-
-
-// ============================================================
-// Bank account module
-// ============================================================
-( function () {
-
-  // ============================================================
-  // This function returns the player character object from 
-  // localStorage
-  // ============================================================
-  let playerCharacterObj = returnPlayerCharacterObject();
-
-  // ============================================================
-  // Local variables
-  // ============================================================
-  let playerBankAccountAmountDisplay = $( "#player-bank-account" );
-  let playerMonthlyIncome = $( "#player-monthly-income" );
-  let playerMonthlyExpenses = $( "#player-monthly-expenses" );
-
-  // ============================================================
-  // Assign the current value of the player's bank account to 
-  // the bank account module
-  // ============================================================
-  playerBankAccountAmountDisplay.html( playerCharacterObj.bankAccount );
-  playerMonthlyIncome.html( playerCharacterObj.monthlyIncome );
-  playerMonthlyExpenses.html( playerCharacterObj.monthlyExpenses );
-}) ();
-
-
-// ============================================================
-// PERSONAL INFO 
-// ============================================================
-( function () {
-  let playerNameDisplay = $( "#player-name-display" );
-  let playerAgeDisplay = $( "#player-age-display" );
-  let playerHomeDisplay = $( "#player-home-display" );
-  let playerHappinessDisplay = $( "#player-happiness-display" );
-  let playerDisciplineDisplay = $( "#player-discipline-display" );
-  let playerLuckDisplay = $( "#player-luck-display" );
-  let playerCharismaDisplay = $( "#player-charisma-display" );
-
-  // ============================================================
-  // This function returns the player character object from 
-  // localStorage
-  // ============================================================
-  let playerCharacterObj = returnPlayerCharacterObject();
-
-  // ============================================================
-  // Append values to the personal module
-  // ============================================================
-  playerNameDisplay.html( playerCharacterObj.name );
-  playerAgeDisplay.html( playerCharacterObj.age );
-  playerHomeDisplay.html( playerCharacterObj.home );
-  playerHappinessDisplay.html( playerCharacterObj.happiness );
-  playerDisciplineDisplay.html( playerCharacterObj.discipline );
-  playerLuckDisplay.html( playerCharacterObj.luck );
-  playerCharismaDisplay.html( playerCharacterObj.charisma );
-}) ();
-
-// ============================================================
-// This function returns the player character object from 
-// localStorage
-// ============================================================
-let playerCharacterObj = returnPlayerCharacterObject();
-
-// ============================================================
-// The recent events array 
-// ============================================================
-let recentEventsArray = [ `${playerCharacterObj.name} is ready to begin life!` ];
-localStorage.setItem( "recentEventsArray", JSON.stringify( recentEventsArray ) );
-
-// ============================================================
-// Load all of the recent events from the recentEventsArray in
-// localStorage
-// ============================================================
-( function () {
-  
-  // ============================================================
-  // Local variables
-  // ============================================================
-  let recentActivityFeed = $( ".recent-activity-feed" );
-  let rowColor = "has-background-white";
-  let rowCounter = 1;
-
-  // ============================================================
-  // The localStorage recent event array
-  // ============================================================
-  let recentEventsArray = JSON.parse( localStorage.getItem( "recentEventsArray" ) );
-  
-  // ============================================================
-  // Iterate through each index of the array and append the
-  // events onto the page
-  // ============================================================
-  for (let i = 0; i < recentEventsArray.length; i++) {
+    let characterObj = universalObj.getCharacterObj()
 
     // ============================================================
-    // Alternate row colors
+    // Bank module UI
     // ============================================================
-    if ( rowColor == "has-background-white" ) {
-      rowColor = "has-background-grey-lighter";
+    $( "#player-bank-account" ).html( characterObj.bankAccount )
+    $( "#player-monthly-income" ).html( characterObj.monthlyIncome )
+    $( "#player-monthly-expenses" ).html( characterObj.monthlyExpenses )
+
+    // ============================================================
+    // Personal info UI
+    // ============================================================
+    $( "#player-name-display" ).html( characterObj.name )
+    $( "#player-age-display" ).html( characterObj.age )
+    $( "#player-home-display" ).html( characterObj.home )
+    $( "#player-happiness-display" ).html( characterObj.happiness )
+    $( "#player-discipline-display" ).html( characterObj.discipline )
+    $( "#player-luck-display" ).html( characterObj.luck )
+    $( "#player-charisma-display" ).html( characterObj.charisma )
+
+    // ============================================================
+    // Health and energy UI
+    // ============================================================
+    $( "#health-bar" ).val( characterObj.health )
+    $( "#health-bar" ).attr( 'max', characterObj.maxHealth )
+    $( "#energy-bar" ).val( characterObj.energy )
+    $( "#energy-bar" ).attr( 'max', characterObj.maxEnergy )
+
+    $( "#health-number-display" ).html( characterObj.health )
+    $( "#maximum-health-number-display" ).html( characterObj.maxHealth )
+
+    $( "#energy-number-display" ).html( characterObj.energy )
+    $( "#maximum-energy-number-display" ).html( characterObj.maxEnergy )
+  },
+
+  calculateMood: function () {
+    let self = this
+
+    // The total number of adding health and energy will be used to
+    // determine what the player's mood is
+    let totalMoodScore = $( "#health-bar" ).val() + $( "#energy-bar" ).val()
+    if ( totalMoodScore < 0 ) totalMoodScore = 0
+  
+    // Dispaly health & energy values in numerical form
+    $( "#health-number-display" ).html( $( "#health-bar" ).val() )
+    $( "#energy-number-display" ).html( $( "#energy-bar" ).val() )
+  
+    // ============================================================
+    // MOODS:
+    // 200:     PERFECT
+    // 175-199: OVERJOYED
+    // 150-174: ELATED
+    // 110-149: HAPPY
+    // 90-109:  CONTENT
+    // 70-89:   DISGRUNTLED
+    // 50-69:   UPSET
+    // 25-49:   FURIOUS
+    // 1-24:    DEPRESSED
+    // 0:       SUICIDAL
+    // ============================================================
+    if ( totalMoodScore >= 200 ) {
+      self.mood = 'Perfect'
+      $( "#current-mood" ).html( "Perfect" )
+      $( "#current-mood" ).addClass( "has-text-success" )
+    }
+    else if ( totalMoodScore < 200 && totalMoodScore >= 175 ) {
+      self.mood = 'Overjoyed'
+      $( "#current-mood" ).html( "Overjoyed" )
+      $( "#current-mood" ).addClass( "has-text-success" )
+    }
+    else if ( totalMoodScore < 175 && totalMoodScore >= 150 ) {
+      self.mood = 'Elated'
+      $( "#current-mood" ).html( "Elated" )
+      $( "#current-mood" ).addClass( "has-text-success" )
+    }
+    else if ( totalMoodScore < 150 && totalMoodScore >= 110 ) {
+      self.mood = 'Happy'
+      $( "#current-mood" ).html( "Happy" )
+      $( "#current-mood" ).addClass( "has-text-info" )
+    }
+    else if ( totalMoodScore < 110 && totalMoodScore >= 90 ) {
+      self.mood = 'Content'
+      $( "#current-mood" ).html( "Content" )
+      $( "#current-mood" ).addClass( "has-text-info" )
+    }
+    else if ( totalMoodScore < 90 && totalMoodScore >= 70 ) {
+      self.mood = 'Disgruntled'
+      $( "#current-mood" ).html( "Disgruntled" )
+      $( "#current-mood" ).addClass( "has-text-info" )
+    }
+    else if ( totalMoodScore < 70 && totalMoodScore >= 50 ) {
+      self.mood = 'Upset'
+      $( "#current-mood" ).html( "Upset" )
+      $( "#current-mood" ).addClass( "has-text-danger" )
+    }
+    else if ( totalMoodScore < 50 && totalMoodScore >= 25 ) {
+      self.mood = 'Furious'
+      $( "#current-mood" ).html( "Furious" )
+      $( "#current-mood" ).addClass( "has-text-danger" )
+    }
+    else if ( totalMoodScore < 25 && totalMoodScore >= 1 ) {
+      self.mood = 'Depressed'
+      $( "#current-mood" ).html( "Depressed" )
+      $( "#current-mood" ).addClass( "has-text-danger" )
     }
     else {
-      rowColor = "has-background-white";
+      self.mood = 'Suicidal'
+      $( "#current-mood" ).html("Suicidal")
+      $( "#current-mood" ).addClass( "has-text-danger" )
     }
+  },
+
+  displayRecentEvents: function () {
+    let self = this
 
     // ============================================================
-    // Print the text to the screen
+    // USED FOR TESTING PURPOSES ONLY
     // ============================================================
-    recentActivityFeed.append(
-      `<p class="is-size-3 recent-activity-row ${ rowColor }">
-        ${ rowCounter }. ${ recentEventsArray[i] }
-      </p>`
-    );
+    let characterObj = universalObj.getCharacterObj()
+
+    console.log( 'characterObj', characterObj )
+
+    let testRecentEventsArray = [
+      `${characterObj.name} is ready to begin life!`,
+      `${characterObj.name} is a new player!`
+    ]
+    localStorage.setItem( "recentEventsArray", JSON.stringify( testRecentEventsArray ) )
 
     // ============================================================
-    // Increment the row counter
+    // Local variables
     // ============================================================
-    rowCounter++;
+    let recentActivityFeed = $( ".recent-activity-feed" );
+    let rowColor = "has-background-white";
+    let rowCounter = 1;
+
+    // ============================================================
+    // The localStorage recent event array
+    // ============================================================
+    let recentEventsArray = JSON.parse( localStorage.getItem( "recentEventsArray" ) );
+    
+    // Loop over recent events
+    for ( let i = 0; i < recentEventsArray.length; i++ ) {
+      // Alternate row colors
+      if ( rowColor == "has-background-white" ) {
+        rowColor = "has-background-grey-lighter";
+      }
+      else {
+        rowColor = "has-background-white";
+      }
+
+      // Append the recent event to page
+      recentActivityFeed.append(
+        `<p class="is-size-3 recent-activity-row ${ rowColor }">
+          ${ rowCounter }. ${ recentEventsArray[i] }
+        </p>`
+      );
+
+      rowCounter++;
+    }
   }
-}) ();
 
-
-// ============================================================
-// Adds a recent event to the recent events module
-// ============================================================
-function addRecentEvent ( recentEvent ) {
-  
-  // ============================================================
-  // Will need to come back to this function
-  // ============================================================
-  console.log( recentEvent );
 }
 
+// Bind the click events
+homeObj.bindEvents()
 
-// ============================================================
-// Binding a click event to the go to the doctor button
-// ============================================================
-let goToDoctorButton = $( "#goToDoctorButton" )
-goToDoctorButton.click( function () {
-  goToTheDoctor();
-});
+// Load the UI
+homeObj.updateUi()
 
+// Load the character's mood
+homeObj.calculateMood()
 
-// ============================================================
-// This function sends your player to the doctor in order to 
-// regenerate health
-// ============================================================
-function goToTheDoctor () {
-
-  // ============================================================
-  // Get the character object
-  // ============================================================
-  let playerCharacterObj = returnPlayerCharacterObject();
-
-  // ============================================================
-  // If the player is under 18, there will be no charge for going
-  // to the doctor as the parent(s) will pay for the visit;
-  // Else, you must pay a doctor's fee ($150 for now)
-  // ============================================================
-  let doctorFee = 0;
-
-  if ( playerCharacterObj.age >= 18 ) {
-    doctorFee = 150;
-  }
-
-  playerCharacterObj.bankAccount -= doctorFee;
-
-  // ============================================================
-  // Add health back to the player
-  // ============================================================
-  playerCharacterObj.health += 50;
-
-  // ============================================================
-  // Make sure that health value is not greater than the max 
-  // health
-  // ============================================================
-  if ( playerCharacterObj.health > playerCharacterObj.maxHealth ) {
-    playerCharacterObj.health = playerCharacterObj.maxHealth;
-  }
-
-  // ============================================================
-  // Set the values of the player obj
-  // ============================================================
-  setPlayerCharacterObject( playerCharacterObj );
-
-  // ============================================================
-  // Updates the health and energy and bank account UI modules
-  // ============================================================
-  updateHealthAndEnergyModule();
-  updateBankAccountModule();
-
-  // ============================================================
-  // Create a UX letting the user know an action has taken place
-  // ============================================================
-  let message = "You had a great check up!";
-  makeSnackbarAndOverlayAppear( message );
-}
+// Load recent events
+homeObj.displayRecentEvents()
