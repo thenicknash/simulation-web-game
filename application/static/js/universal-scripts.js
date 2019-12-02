@@ -75,12 +75,17 @@ let universalObj = {
   displayAdvanceYearButton: function () {
     let self = this
 
+    let pathOfUrl = window.location.pathname
+
     // Choose whether to hide the advance year button or not
     let newGameRegex = /\/$/
-    let newGamePage = pathOfURL.match( newGameRegex )
+    let newGamePage = pathOfUrl.match( newGameRegex )
 
     let introRegex = /intro/i
-    let introPage = pathOfURL.match( introRegex )
+    let introPage = pathOfUrl.match( introRegex )
+
+    console.log( 'newGamePage', newGamePage )
+    console.log( 'introPage', introPage )
 
     // Hide if we are on either of these 2 pages
     if ( newGamePage || introPage ) {
@@ -101,7 +106,7 @@ let universalObj = {
     let characterObj = localStorage.getItem( "characterObj" )
 
     // Parsing the string into a JS object
-    self.characterObj = JSON.parse( playerCharacter )
+    self.characterObj = JSON.parse( characterObj )
 
     return self.characterObj
   },
@@ -123,7 +128,7 @@ let universalObj = {
     self.degenerateHealth()
 
     // Update the page
-    self.updatePageOnAdvanceYearButtonClick()
+    self.updatePageOnAdvanceYear()
   },
 
   agePlayerByOne: function () {
@@ -131,13 +136,13 @@ let universalObj = {
 
     // This function returns the player character object from
     // localStorage
-    let characterObj = returnPlayerCharacterObject()
+    let characterObj = self.getCharacterObj()
 
     // Add 1 to the player's age
-    playerCharacterObj.age = Number( playerCharacterObj.age ) + 1
+    characterObj.age = Number( characterObj.age ) + 1
 
     // Re-set the player character object into localStorage
-    localStorage.setItem( "characterObj", JSON.stringify( playerCharacterObj ) )
+    localStorage.setItem( "characterObj", JSON.stringify( characterObj ) )
   },
 
   balanceBankAccount: function () {
@@ -151,14 +156,11 @@ let universalObj = {
     let bankAccoutAmount = Number( characterObj.bankAccount )
   },
 
-  updatePageAdvanceYear: function () {
+  updatePageOnAdvanceYear: function () {
     let self = this
 
-    // Update the health and energy module
-    self.updateHealthAndEnergyModule()
-
-    // Update the personal info module
-    self.updatePersonalInfoModule()
+    // Update home UI
+    homeObj.updateUi()
 
     // Make the snackbar & overlay appear indicating that a year
     // has passed
@@ -210,3 +212,6 @@ let universalObj = {
 }
 
 universalObj.bindEvents()
+
+// See if the advance year button should be displayed
+universalObj.displayAdvanceYearButton()
