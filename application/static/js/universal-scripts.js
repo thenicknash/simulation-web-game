@@ -84,9 +84,6 @@ let universalObj = {
     let introRegex = /intro/i
     let introPage = pathOfUrl.match( introRegex )
 
-    console.log( 'newGamePage', newGamePage )
-    console.log( 'introPage', introPage )
-
     // Hide if we are on either of these 2 pages
     if ( newGamePage || introPage ) {
       let advanceYearButton = $( "#advance-year-button" )
@@ -126,6 +123,9 @@ let universalObj = {
     // 9. Update the current page
     self.agePlayerByOne()
     self.degenerateHealth()
+    
+    // Update the recent activity stream
+    recentEventsObj.ageUpByOne()
 
     // Update the page
     self.updatePageOnAdvanceYear()

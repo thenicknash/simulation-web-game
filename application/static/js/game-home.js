@@ -8,7 +8,7 @@ let homeObj = {
     let self = this
 
     $( "#goToDoctorButton" ).click( function () {
-      eventsObj.goToDoctor()
+      playerEventsObj.goToDoctor()
     });
   },
 
@@ -125,55 +125,6 @@ let homeObj = {
       $( "#current-mood" ).html("Suicidal")
       $( "#current-mood" ).addClass( "has-text-danger" )
     }
-  },
-
-  displayRecentEvents: function () {
-    let self = this
-
-    // ============================================================
-    // USED FOR TESTING PURPOSES ONLY
-    // ============================================================
-    let characterObj = universalObj.getCharacterObj()
-
-    console.log( 'characterObj', characterObj )
-
-    let testRecentEventsArray = [
-      `${characterObj.name} is ready to begin life!`,
-      `${characterObj.name} is a new player!`
-    ]
-    localStorage.setItem( "recentEventsArray", JSON.stringify( testRecentEventsArray ) )
-
-    // ============================================================
-    // Local variables
-    // ============================================================
-    let recentActivityFeed = $( ".recent-activity-feed" );
-    let rowColor = "has-background-white";
-    let rowCounter = 1;
-
-    // ============================================================
-    // The localStorage recent event array
-    // ============================================================
-    let recentEventsArray = JSON.parse( localStorage.getItem( "recentEventsArray" ) );
-    
-    // Loop over recent events
-    for ( let i = 0; i < recentEventsArray.length; i++ ) {
-      // Alternate row colors
-      if ( rowColor == "has-background-white" ) {
-        rowColor = "has-background-grey-lighter";
-      }
-      else {
-        rowColor = "has-background-white";
-      }
-
-      // Append the recent event to page
-      recentActivityFeed.append(
-        `<p class="is-size-3 recent-activity-row ${ rowColor }">
-          ${ rowCounter }. ${ recentEventsArray[i] }
-        </p>`
-      );
-
-      rowCounter++;
-    }
   }
 
 }
@@ -186,6 +137,3 @@ homeObj.updateUi()
 
 // Load the character's mood
 homeObj.calculateMood()
-
-// Load recent events
-homeObj.displayRecentEvents()

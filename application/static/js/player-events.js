@@ -1,8 +1,10 @@
 "use strict"
 
-let eventsObj = {
+let playerEventsObj = {
 
   goToDoctor: function () {
+    let self = this
+
     // Get the character object
     let characterObj = universalObj.getCharacterObj();
 
@@ -14,31 +16,33 @@ let eventsObj = {
     let doctorFee = 0;
 
     if ( characterObj.age >= 18 ) {
-      doctorFee = 150;
+      doctorFee = 150
     }
 
     characterObj.bankAccount -= doctorFee;
 
     // Add health back to the player
-    characterObj.health += 50;
+    characterObj.health += 50
 
     // Make sure that health value is not greater than the max 
     // health
     if ( characterObj.health > characterObj.maxHealth ) {
-      characterObj.health = characterObj.maxHealth;
+      characterObj.health = characterObj.maxHealth
     }
 
     // Set the values of the player obj
-    universalObj.setCharacterObj( characterObj );
+    universalObj.setCharacterObj( characterObj )
 
-    // ============================================================
     // Updates the health and energy and bank account UI modules
-    // ============================================================
     homeObj.updateUi()
 
+    // Create a recent event entry
+    let eventMessage = `${ characterObj.name } had a great check up!`
+    recentEventsObj.createNewEvent( eventMessage )
+
     // Inform player that the event has completed
-    let message = "You had a great check up!";
-    universalObj.displayOverlay( message );
+    let message = "You had a great check up!"
+    universalObj.displayOverlay( message )
   }
 
 }

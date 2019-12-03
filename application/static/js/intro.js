@@ -132,9 +132,26 @@ let introObject = {
     // string values
     localStorage.setItem( "characterObj", JSON.stringify( self.characterObj ) )
 
+    // Create the initial Recent Events stream
+    self.createInitialStream()
+  },
+
+  createInitialStream: function () {
+    let self = this
+
+    let characterObj = self.characterObj
+
+    let recentEventsArray = [
+      `${ characterObj.name } is ready to begin life!`,
+      `${ characterObj.name } is born in ${ characterObj.home }!`,
+      `${ characterObj.name } is a ${ characterObj.archetype } person!`
+    ]
+
+    localStorage.setItem( "recentEventsArray", JSON.stringify( recentEventsArray ) )
+
     // Redirect to main game page
     window.location.href = 'http://127.0.0.1:5000/game/home'
-  }
+  },
 
 }
 
