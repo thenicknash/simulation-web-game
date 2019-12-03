@@ -211,7 +211,11 @@ let universalObj = {
   }
 }
 
+// Bind page events
 universalObj.bindEvents()
 
 // See if the advance year button should be displayed
 universalObj.displayAdvanceYearButton()
+
+// Randomize sub-banner headings
+universalObj.randomizeBanner()
